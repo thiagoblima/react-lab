@@ -8,7 +8,7 @@ let bookList = [
 	{"title": "Cat's Cradle", "author": "Kurt Vonnegut", "pages": 304}
 ]
 
-const Book = ({title, author, pages, freeBookmark}) => {
+const Book = ({title="No Title Provided", author= "No Author", pages=0, freeBookmark}) => {
 	return (
 		<section>
 			<h2>{title}</h2>
@@ -30,6 +30,12 @@ const NotHiring = () =>
 	</div>
 
 class Library extends React.Component {
+
+	static defaultProps = {
+		books: [
+			{"title": "Tahoe Tales", "author": "Chet Whitley", "pages": 1000}
+		]
+	}
 	
 	state = { 
 		open: true,
@@ -91,9 +97,7 @@ class Library extends React.Component {
 	}
 }
 
-
-
 render(
-	<Library books={bookList}/>, 
+	<Library books={bookList} />, 
 	document.getElementById('root')
 )
